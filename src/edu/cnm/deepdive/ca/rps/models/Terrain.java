@@ -64,15 +64,19 @@ public class Terrain {
       initialize();
     }
 
+    Breed cellOne;
+    Breed cellTwo;
+    Breed intermediate;
+
     if (getMixing() > DEFAULT_MIXING_NUMBER) {
       for (int i = 0; i < getMixing(); i++) {
         int[] firstPick = randomCell();
         int[] secondPick = randomCell();
-        Breed cellOne = cells[firstPick[0]][firstPick[1]];
-        Breed cellTwo = cells[secondPick[0]][secondPick[1]];
-//          intermediate = firstPick[i];
-//          firstPick[i] = secondPick[i];
-//          secondPick[i] = intermediate;
+        cellOne = cells[firstPick[0]][firstPick[1]];
+        cellTwo = cells[secondPick[0]][secondPick[1]];
+          intermediate = cellOne[i];
+          cellOne[i] = cellTwo[i];
+          cellTwo[i] = intermediate;
         }
       }
 
