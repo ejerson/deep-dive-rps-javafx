@@ -17,4 +17,7 @@ public class Constants {
 
   public static final int WINDOW_WIDTH = 700;
   public static final int WINDOW_HEIGHT = 850;
+  public static final int SPEED_CONVERT = 10;
+  public static final int TERRAIN_SIZE = 300;
+  public static final String NEIGHBORHOOD_CHOICES = "neighborhoodChoices";
 }

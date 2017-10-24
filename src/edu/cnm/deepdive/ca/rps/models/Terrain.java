@@ -36,7 +36,6 @@ public class Terrain {
   private Neighborhood neighborhood = DEFAULT_NEIGHBORHOOD;
   private int iterationsPerStep = DEFAULT_ITERATIONS_PER_STEP;
   private int mixing = DEFAULT_MIXING_NUMBER;
-  private Breed intermediate;
   private int steps;
   private long totalIterations;
 

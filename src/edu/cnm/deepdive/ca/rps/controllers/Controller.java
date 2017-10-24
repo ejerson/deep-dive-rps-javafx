@@ -2,6 +2,7 @@ package edu.cnm.deepdive.ca.rps.controllers;
 
 import edu.cnm.deepdive.ca.rps.models.Terrain;
 import edu.cnm.deepdive.ca.rps.models.Terrain.Neighborhood;
+import edu.cnm.deepdive.ca.rps.util.Constants;
 import edu.cnm.deepdive.ca.rps.views.TerrainView;
 import edu.cnm.deepdive.ca.rps.views.Timer;
 import java.util.ResourceBundle;
@@ -40,14 +41,13 @@ public class Controller {
   private Terrain terrain;
   private int runnerThreadRest = DEFAULT_RUNNER_THREAD_REST;
 
-
   @FXML
   private void initialize() {
     speedSlider.valueProperty().addListener(new ChangeListener<Number>() {
       @Override
       public void changed(ObservableValue<? extends Number> observable, Number oldValue,
           Number newValue) {
-        runnerThreadRest = (int) Math.round(10 / newValue.doubleValue());
+        runnerThreadRest = (int) Math.round(Constants.SPEED_CONVERT / newValue.doubleValue());
       }
     });
 
@@ -55,13 +55,15 @@ public class Controller {
       @Override
       public void changed(ObservableValue<? extends Number> observable, Number oldValue,
           Number newValue) {
-        // TODO - cry inside in hopes for enlightenment.
+
+        terrain.setMixing(newValue.intValue());
+
       }
     });
 
     timer = new Timer(terrainView);
     terrain = new Terrain();
-    terrain.setSize(300);
+    terrain.setSize(Constants.TERRAIN_SIZE);
     int runnerThreadRest = DEFAULT_RUNNER_THREAD_REST;
     resetModel();
   }
@@ -110,7 +112,7 @@ public class Controller {
 
   public void setBundle(ResourceBundle bundle) {
     this.bundle = bundle;
-    String neighborhoodChoices = bundle.getString("neighborhoodChoices");
+    String neighborhoodChoices = bundle.getString(Constants.NEIGHBORHOOD_CHOICES);
     String choices[] = neighborhoodChoices.split("\\|");
     this.neighborhoodChoices = new Neighborhood[choices.length];
     for (int i = 0; i < choices.length; i++) {
