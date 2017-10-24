@@ -80,6 +80,43 @@
     GridPane.rowSpan="20"
     />
 
+  <Slider
+    fx:id="mixingSlider"
+    min="0"
+    max="100"
+    minorTickCount="1"
+    majorTickUnit="50"
+    snapToTicks="true"
+    showTickMarks="true"
+    showTickLabels="true"
+    blockIncrement="1"
+    value="1"
+    valueChanging="true"
+    GridPane.rowIndex="3"
+    GridPane.columnIndex="0"
+    GridPane.columnSpan="2"
+    maxWidth="400"
+    GridPane.halignment="CENTER"
+  >
+    <padding>
+      <Insets top="30" bottom="10"/>
+    </padding>
+  </Slider>
+
+  <Label
+    text="%choiceBoxText"
+    labelFor="$neighborhoodChoice"
+    GridPane.columnIndex="2"
+    GridPane.rowIndex="1"
+    GridPane.rowSpan="20"
+    GridPane.halignment="LEFT"
+    GridPane.columnSpan="2"
+  >
+    <padding>
+      <Insets top="50" left="2"/>
+    </padding>
+  </Label>
+
   <ChoiceBox
     fx:id="neighborhoodChoice"
     onAction="#changeNeighborhood"

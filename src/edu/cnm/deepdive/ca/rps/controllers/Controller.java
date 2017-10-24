@@ -18,6 +18,8 @@ public class Controller {
   private static final int DEFAULT_RUNNER_THREAD_REST = 10;
 
   @FXML
+  Slider mixingSlider;
+  @FXML
   TerrainView terrainView;
   @FXML
   Slider speedSlider;
@@ -41,7 +43,22 @@ public class Controller {
 
   @FXML
   private void initialize() {
-    // initialilze waits until the constructor is done loading
+    speedSlider.valueProperty().addListener(new ChangeListener<Number>() {
+      @Override
+      public void changed(ObservableValue<? extends Number> observable, Number oldValue,
+          Number newValue) {
+        runnerThreadRest = (int) Math.round(10 / newValue.doubleValue());
+      }
+    });
+
+    mixingSlider.valueProperty().addListener(new ChangeListener<Number>() {
+      @Override
+      public void changed(ObservableValue<? extends Number> observable, Number oldValue,
+          Number newValue) {
+        // TODO - cry inside in hopes for enlightenment.
+      }
+    });
+
     timer = new Timer(terrainView);
     terrain = new Terrain();
     terrain.setSize(300);
@@ -51,13 +68,8 @@ public class Controller {
 
   @FXML
   private void runModel() {
-    speedSlider.valueProperty().addListener(new ChangeListener<Number>() {
-      @Override
-      public void changed(ObservableValue<? extends Number> observable, Number oldValue,
-          Number newValue) {
-        runnerThreadRest = (int) Math.round(10 / newValue.doubleValue());
-      }
-    });
+
+
     runButton.setDisable(true);
     stopButton.setDisable(false);
     resetButton.setDisable(true);
@@ -74,7 +86,6 @@ public class Controller {
     resetButton.setDisable(false);
     setRunning(false);
     timer.stop();
-
   }
 
   @FXML
@@ -85,12 +96,6 @@ public class Controller {
     terrain.initialize();
     terrainView.setSource(terrain.getSnapshot());
     terrainView.draw();
-
-  }
-
-  @FXML
-  private void controlModel(ActionEvent event) {
-    System.out.println(((Button) event.getSource()).getText());
   }
 
   @FXML
@@ -141,5 +146,6 @@ public class Controller {
       }
     }
   }
+
 
 }
