@@ -181,6 +181,7 @@ public class Terrain {
     this.iterationsPerStep = iterationsPerStep;
   }
 
+
   private void combat() {
     int[] attackerCell = randomCell();
     int[] defenderCell = randomNeighbor(attackerCell[0], attackerCell[1]);

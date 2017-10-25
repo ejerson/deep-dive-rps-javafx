@@ -103,10 +103,20 @@ public class Controller {
     terrain.setNeighborhood(neighborhoodChoices[index]);
   }
 
+  /**
+   * Provides access to bundle
+   *
+   * @return returns a bundle
+   */
   public ResourceBundle getBundle() {
     return bundle;
   }
 
+  /**
+   * Allows mutation of the bundle
+   *
+   * @param bundle // TODO - add comment
+   */
   public void setBundle(ResourceBundle bundle) {
     this.bundle = bundle;
     String neighborhoodChoices = bundle.getString(Constants.NEIGHBORHOOD_CHOICES);
@@ -122,14 +132,28 @@ public class Controller {
     }
   }
 
+  /**
+   * Provides access to running field
+   *
+   * @return returns the value of running field
+   */
   private synchronized Boolean getRunning() {
     return running;
   }
 
+  /**
+   * Allows mutation of the running field
+   *
+   * @param running on or off flag
+   */
   private synchronized void setRunning(Boolean running) {
     this.running = running;
   }
 
+  /**
+   * Determines the state of the thread created by the Runner class and
+   * setting the thread to sleep based upon a constant length of time.
+   */
   private class Runner extends Thread {
 
     @Override
