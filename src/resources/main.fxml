@@ -94,8 +94,8 @@
     valueChanging="true"
     GridPane.rowIndex="3"
     GridPane.columnIndex="0"
-    GridPane.columnSpan="2"
-    maxWidth="400"
+    GridPane.columnSpan="3"
+    maxWidth="640"
     GridPane.halignment="CENTER"
   >
     <padding>

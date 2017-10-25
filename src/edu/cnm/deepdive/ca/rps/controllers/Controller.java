@@ -8,15 +8,12 @@ import edu.cnm.deepdive.ca.rps.views.Timer;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Slider;
 
 public class Controller {
-
-  private static final int DEFAULT_RUNNER_THREAD_REST = 10;
 
   @FXML
   Slider mixingSlider;
@@ -34,12 +31,12 @@ public class Controller {
   Button resetButton;
 
   private ResourceBundle bundle;
-  private Terrain.Neighborhood neighborhood = Terrain.DEFAULT_NEIGHBORHOOD;
+  private Terrain.Neighborhood neighborhood = Constants.DEFAULT_NEIGHBORHOOD;
   private Terrain.Neighborhood[] neighborhoodChoices;
   private Timer timer;
   private Boolean running = false;
   private Terrain terrain;
-  private int runnerThreadRest = DEFAULT_RUNNER_THREAD_REST;
+  private int runnerThreadRest = Constants.DEFAULT_RUNNER_THREAD_REST;
 
   @FXML
   private void initialize() {
@@ -64,7 +61,7 @@ public class Controller {
     timer = new Timer(terrainView);
     terrain = new Terrain();
     terrain.setSize(Constants.TERRAIN_SIZE);
-    int runnerThreadRest = DEFAULT_RUNNER_THREAD_REST;
+    int runnerThreadRest = Constants.DEFAULT_RUNNER_THREAD_REST;
     resetModel();
   }
 
@@ -119,7 +116,7 @@ public class Controller {
       String choice = choices[i].split("@")[0];
       this.neighborhoodChoices[i] = Terrain.Neighborhood.valueOf(choices[i].split("@")[1]);
       neighborhoodChoice.getItems().add(choice);
-      if (this.neighborhoodChoices[i] == Terrain.DEFAULT_NEIGHBORHOOD) {
+      if (this.neighborhoodChoices[i] == Constants.DEFAULT_NEIGHBORHOOD) {
         neighborhoodChoice.setValue(choice);
       }
     }
